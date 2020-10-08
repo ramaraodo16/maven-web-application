@@ -1,0 +1,12 @@
+node('flip node')
+{
+    def mavenHome = tool name: "maven3.6.3"
+    stage('Github  code')
+    {
+        git credentialsId: 'githubcreddetails', url: 'https://github.com/ramaraodo16/maven-web-application.git'
+    }
+    stage('maven Build')
+    {
+        sh "${mavenHome}/bin/mvn clean package"
+    }
+}
